@@ -1,0 +1,32 @@
+{
+    "name": "mehrkanal/array-utilities",
+    "description": "Simple class for working with arrays in ZF2",
+    "type": "library",
+    "license": "",
+    "keywords": [
+        "mehrkanal",
+        "array"
+    ],
+    "homepage": "https://github.com/mehrkanal/array-utilities",
+    "authors": [
+        {
+            "name": "Henrik Thesing",
+            "email": "thesing@mehrakanal.com",
+            "homepage": "http://www.mehrkanal.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "require-dev" : {
+	"phpunit/phpunit" : "3.7.*"
+    },
+    "autoload" : {
+	"psr-0" : {
+	    "ArrayUtilities" : "src/"
+	}
+    }
+}
+
+
