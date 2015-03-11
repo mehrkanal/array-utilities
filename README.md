@@ -1,1 +1,1 @@
-## mehrkanal/array-utils
+## mehrkanal/array-utilities
