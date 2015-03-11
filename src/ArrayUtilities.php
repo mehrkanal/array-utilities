@@ -1,6 +1,6 @@
 <?php
 
-namespace Mehrkanal\ArrayUtilities;
+namespace Mehrkanal;
 
 /**
  * Array helpers
