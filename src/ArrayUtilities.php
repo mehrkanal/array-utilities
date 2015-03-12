@@ -3,13 +3,14 @@
 namespace Mehrkanal;
 
 /**
- * Array helpers
+ * Utilities class with helper functions for array handling
  *
+ * @author Henrik Thesing <thesing@mehrkanal.com>
  */
 class ArrayUtilities
 {
     /**
-     * Tests if an array is associative or not.
+     * Tests if an array is associative or not
      *
      * @param array $array array to check
      *
@@ -24,7 +25,7 @@ class ArrayUtilities
     }
 
     /**
-     * Test if a value is an array with an additional check for array-like objects.
+     * Tests if a value is an array with an additional check for array-like objects
      *
      * @param mixed $value value to check
      *
@@ -49,7 +50,7 @@ class ArrayUtilities
      * @throws \InvalidArgumentException
      * @return bool
      */
-    public static function search($needle, $haystack, &$indexes = array())
+    public static function search($needle, $haystack, &$indexes = [])
     {
         if (!static::isArray($haystack)) {
             throw new \InvalidArgumentException("Values haystack is not an array.");
@@ -62,15 +63,13 @@ class ArrayUtilities
                 if ($status) {
                     return true;
                 } else {
-                    $indexes = array();
+                    $indexes = [];
                 }
             } else if ($value == $needle) {
                 $indexes[] = $key;
-
                 return true;
             }
         }
-
         return false;
     }
 
@@ -89,7 +88,7 @@ class ArrayUtilities
             throw new \InvalidArgumentException("Values to be replaced is not an array.");
         }
 
-        $res = array();
+        $res = [];
         foreach ($values as $key => $value) {
             if (isset($map[$value])) {
                 $res[$key] = $map[$value];
@@ -100,7 +99,7 @@ class ArrayUtilities
     }
 
     /**
-     * Clear multiple keys of array
+     * Clears multiple keys of array
      *
      * @param array $data
      * @param array $keys
@@ -169,5 +168,28 @@ class ArrayUtilities
         }
 
         return $res;
+    }
+
+    /**
+     * Returns the max depth of the given array
+     *
+     * @param array $array
+     *
+     * @return int
+     */
+    public static function depth(array $array)
+    {
+        $depth = 1;
+
+        foreach ($array as $value) {
+            if (is_array($value)) {
+                $current_depth = static::depth($value) + 1;
+                if ($current_depth > $depth) {
+                    $depth = $current_depth;
+                }
+            }
+        }
+
+        return $depth;
     }
 }
