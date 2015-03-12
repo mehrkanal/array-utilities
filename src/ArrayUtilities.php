@@ -133,6 +133,10 @@ class ArrayUtilities
      */
     public static function skip($array, $n, $tail = false)
     {
+        if (static::isAssoc($array)) {
+            throw new \InvalidArgumentException("Given array needs to be an indexed array, found associative");
+        }
+	
         $c = count($array);
 
         if ($tail) {
